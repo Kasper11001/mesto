@@ -1,0 +1,15 @@
+.form {
+  position: fixed;
+  width: 282px;
+  min-height: 322px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  align-self: flex-end;
+}
+
+@media screen and (min-width: 880px) {
+  .form {
+    width: 430px;
+    min-height: 330px;
+  }
+}
