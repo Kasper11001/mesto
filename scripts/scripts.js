@@ -7,9 +7,10 @@ let formField = popup.querySelectorAll('.form__field');
 let profileName = main.querySelector('.profile__name');
 let profileAbout = main.querySelector('.profile__about');
 let safeBtn = popup.querySelector('.form__safe-btn');
+// let cards = main.querySelector('.cards');
+// let cardLike = document.querySelectorAll('.card__like');
 
-
-
+// console.log(cardLike);
 
  function switchPopup() {
   popup.classList.toggle('popup_opened');
@@ -25,8 +26,12 @@ function safeInfo() {
 }
 
 
+// function switchLike() {
+//   cardLike.classList.toggle('card__like_active');
+// }
 
 popupCloseIcon.addEventListener('click', switchPopup);
 profileEditBtn.addEventListener('click', switchPopup);
 safeBtn.addEventListener('click', safeInfo);
+// cardLike.addEventListener('click', switchLike);
 
