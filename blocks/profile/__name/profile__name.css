@@ -9,6 +9,9 @@
   line-height: 33px;
   text-align: center;
   color: #FFFFFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
 }
 
