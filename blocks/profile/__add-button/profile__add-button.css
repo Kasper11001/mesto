@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.profile__add-button:hover {
+  opacity: .3;
+  transition: .3s;
+}
+
 @media screen and (min-width: 880px) {
   .profile__add-button {
     margin-top: 0;
@@ -18,9 +23,4 @@
     height: 50px;
     margin-left: 244px;
   }
-}
-
-.profile__add-button:hover {
-  opacity: .3;
-  transition: .3s;
 }

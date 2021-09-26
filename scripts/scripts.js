@@ -6,21 +6,27 @@ let profileEditBtn = profile.querySelector('.profile__edit-button');
 let formField = popup.querySelectorAll('.form__field');
 let profileName = main.querySelector('.profile__name');
 let profileAbout = main.querySelector('.profile__about');
+let safeBtn = popup.querySelector('.form__safe-btn');
 
-formField[0].setAttribute('placeholder', profileName.textContent);
-formField[1].setAttribute('placeholder', profileAbout.textContent);
 
-console.log(profileName.textContent);
 
 
  function switchPopup() {
   popup.classList.toggle('popup_opened');
+  formField[0].setAttribute('value', profileName.textContent);
+  formField[1].setAttribute('value', profileAbout.textContent);
  }
 
-function qwe () {
-  formField[0].removeAttribute('placeholder', '');
-  formField[1].removeAttribute('placeholder', '');
+
+function safeInfo() {
+  profileName.textContent = formField[0].value;
+  profileAbout.textContent = formField[1].value;
+  switchPopup();
 }
+
+
 
 popupCloseIcon.addEventListener('click', switchPopup);
 profileEditBtn.addEventListener('click', switchPopup);
+safeBtn.addEventListener('click', safeInfo);
+// profileAddBtn.addEventListener('click', );

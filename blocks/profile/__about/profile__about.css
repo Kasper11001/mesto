@@ -6,16 +6,17 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
-  max-width: 282px;
+  min-width: 282px;
   margin: auto;
 }
 
 @media screen and (min-width: 880px) {
   .profile__about {
-    max-width: 336px;
+    min-width: 336px;
     margin: 8px 0 0 0;
     font-size: 18px;
     line-height: 22px;
+    text-align: start;
   }
 }
 
