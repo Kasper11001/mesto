@@ -1,4 +1,5 @@
 let popup = document.querySelector('.popup');
+let form = popup.querySelector('.form');
 let main = document.querySelector('.main');
 let profile = main.querySelector('.profile');
 let popupCloseIcon = popup.querySelector('.popup__close-icon');
@@ -16,10 +17,12 @@ let safeBtn = popup.querySelector('.form__safe-btn');
   popup.classList.toggle('popup_opened');
   formField[0].setAttribute('value', profileName.textContent);
   formField[1].setAttribute('value', profileAbout.textContent);
+
  }
 
 
-function safeInfo() {
+function safeInfo(evt) {
+  evt.preventDefault()
   profileName.textContent = formField[0].value;
   profileAbout.textContent = formField[1].value;
   switchPopup();
@@ -32,6 +35,8 @@ function safeInfo() {
 
 popupCloseIcon.addEventListener('click', switchPopup);
 profileEditBtn.addEventListener('click', switchPopup);
-safeBtn.addEventListener('click', safeInfo);
+form.addEventListener('submit', safeInfo);
 // cardLike.addEventListener('click', switchLike);
+
+
 
