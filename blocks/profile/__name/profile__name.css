@@ -1,5 +1,5 @@
 .profile__name {
-  max-width: 189px;
+  min-width: 189px;
   margin: 26px 10px 7px 46px;
   padding: 0;
   font-family: 'Inter', Arial, sans-serif;

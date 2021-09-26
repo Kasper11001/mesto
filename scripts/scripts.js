@@ -29,4 +29,4 @@ function safeInfo() {
 popupCloseIcon.addEventListener('click', switchPopup);
 profileEditBtn.addEventListener('click', switchPopup);
 safeBtn.addEventListener('click', safeInfo);
-// profileAddBtn.addEventListener('click', );
+
