@@ -4,6 +4,8 @@
   background-image: url(../../../images/Vector-like.svg);
   margin: 5px 0 0 21px;
   cursor: pointer;
+  border: 0;
+  background-color: white;
 }
 
 .card__like:hover {

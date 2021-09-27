@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
-    <link rel="stylesheet" href="fonts/Inter/inter.css">
 </head>
 <body class="page">
   <div class="popup">
     <div class="popup__container">
-      <div class="popup__close-icon"></div>
+      <button class="popup__close-icon" type="button"></button>
       <div class="form">
         <h2 class="form__title">Редактировать профиль</h2>
-        <form class="form__fields">
-            <input class="form__field" type="text" placeholder="" value="">
-            <input class="form__field" type="text" placeholder="" value="">
-          <button class="form__safe-btn" type="submit">Сохранить</button>
+        <form class="form__fields" name="form">
+            <input class="form__field" type="text" placeholder="" value="Жак-Ив Кусто" name="name">
+            <input class="form__field" type="text" placeholder="" value="Исследователь океана" name="profession">
+            <button class="form__safe-btn" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -25,8 +24,7 @@
     <header class="header">
       <div class="logo"></div>
     </header>
-    <main class="main">
-    <div class="main__container">
+    <main class="main main__container">
     <section class="profile">
       <img class="profile__avatar" src="./images/image.png" alt="Аватар">
       <div class="profile__info">
@@ -40,35 +38,34 @@
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинная часовня">
         <h2 class="card__title">Карачаевск</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Вид на Эльбрус">
         <h2 class="card__title">Гора Эльбрус</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Вид на Домбай">
         <h2 class="card__title">Домбай</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Вид на Эльбрус">
         <h2 class="card__title">Гора Эльбрус</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Вид на Домбай">
         <h2 class="card__title">Домбай</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
       <div class="card">
         <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинная часовня">
         <h2 class="card__title">Карачаево-Черкесск</h2>
-        <div class="card__like"></div>
+        <button class="card__like" type="button"></button>
       </div>
     </section>
-  </div>
     </main>
   <footer class="footer">
     <p class="footer__info">© 2020 Mesto Russia</p>

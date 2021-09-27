@@ -8,18 +8,13 @@ let formField = popup.querySelectorAll('.form__field');
 let profileName = main.querySelector('.profile__name');
 let profileAbout = main.querySelector('.profile__about');
 let safeBtn = popup.querySelector('.form__safe-btn');
-// let cards = main.querySelector('.cards');
-// let cardLike = document.querySelectorAll('.card__like');
 
-// console.log(cardLike);
-
- function switchPopup() {
+function switchPopup() {
+  profileEditBtn.classList.toggle('profole__edit-button_clicked');
   popup.classList.toggle('popup_opened');
-  formField[0].setAttribute('value', profileName.textContent);
-  formField[1].setAttribute('value', profileAbout.textContent);
-
+  formField[0].value = profileName.textContent;
+  formField[1].value = profileAbout.textContent;
  }
-
 
 function safeInfo(evt) {
   evt.preventDefault()
@@ -28,15 +23,9 @@ function safeInfo(evt) {
   switchPopup();
 }
 
-
-// function switchLike() {
-//   cardLike.classList.toggle('card__like_active');
-// }
-
 popupCloseIcon.addEventListener('click', switchPopup);
 profileEditBtn.addEventListener('click', switchPopup);
 form.addEventListener('submit', safeInfo);
-// cardLike.addEventListener('click', switchLike);
 
 
 
