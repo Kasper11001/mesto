@@ -10,7 +10,7 @@
 }
 
 .card__like:hover {
-  opacity: .6;
+  opacity: .8;
   transition: .3s;
 }
 

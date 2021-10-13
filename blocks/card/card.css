@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   max-width: 282px;
