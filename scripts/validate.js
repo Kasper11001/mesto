@@ -45,7 +45,6 @@ function handleSubmit(event) {
     sum[input.name] = input.value;
     return sum;
   },{});
-  console.log(data);
 }
 
 function addListenersToInput(input, obj) {
@@ -55,7 +54,6 @@ function addListenersToInput(input, obj) {
 }
 
 function handleFieldValidation(event, obj) {
-  console.log(event);
   const {target: element} = event;
   element.setCustomValidity('');
   const errorContainer = document.querySelector(`#${element.id}-${obj.inputErrorClass}`);
