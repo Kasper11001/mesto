@@ -22,18 +22,17 @@
 
 
 
-function closePopup() {
-  document.addEventListener('keydown', function(event) {
-    if (event.code === 'Escape') {
-      popupEditProfile.classList.remove('popup_opened');
-      popupNewCard.classList.remove('popup_opened');
-      popupImage.classList.remove('popup_opened');
-    }
+ function closePopupOnEsc() {
 
-  });
-}
+     if (event.code === 'Escape') {
+       popupEditProfile.classList.remove('popup_opened');
+       popupNewCard.classList.remove('popup_opened');
+       popupImage.classList.remove('popup_opened');
+       document.removeEventListener('keydown', closePopupOnEsc);
+     }
+ }
 
-closePopup();
+
 
 document.addEventListener('click', function(event) {
   if (event.target === document.querySelector('.popup_opened')) {
@@ -106,20 +105,27 @@ document.addEventListener('click', function(event) {
 
   function togglePopup(popup) {
     popup.classList.toggle('popup_opened');
+    document.addEventListener('keydown', closePopupOnEsc);
+
   }
 
  function switchPopup() {
    togglePopup(popupEditProfile);
+   document.addEventListener('keydown', closePopupOnEsc);
    formsFieldEditProfile[0].value = profileName.textContent;
    formsFieldEditProfile[1].value = profileAbout.textContent;
   }
 
  function switchPopupNewCard() {
   togglePopup(popupNewCard);
+  document.addEventListener('keydown', closePopupOnEsc);
  }
 
  function switchPopupImage() {
   togglePopup(popupImage);
+
+
+
  }
 
  function safeInfo(evt) {
