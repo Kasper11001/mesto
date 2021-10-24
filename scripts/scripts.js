@@ -18,6 +18,30 @@
  const imgBlock = document.querySelector('.popup-image__block');
  const imgText = document.querySelector('.popup-image__text');
  const popup = document.querySelectorAll('.popup');
+ const popupContainer = document.querySelectorAll('.popup__container');
+
+
+
+function closePopup() {
+  document.addEventListener('keydown', function(event) {
+    if (event.code === 'Escape') {
+      popupEditProfile.classList.remove('popup_opened');
+      popupNewCard.classList.remove('popup_opened');
+      popupImage.classList.remove('popup_opened');
+    }
+
+  });
+}
+
+closePopup();
+
+document.addEventListener('click', function(event) {
+  if (event.target === document.querySelector('.popup_opened')) {
+    popupEditProfile.classList.remove('popup_opened');
+    popupNewCard.classList.remove('popup_opened');
+    popupImage.classList.remove('popup_opened');
+  }
+});
 
  const initialCards = [
    {

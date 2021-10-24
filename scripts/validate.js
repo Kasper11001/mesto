@@ -1,10 +1,19 @@
+enableValidation({
+  formSelector: '.form__fields',
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__safe-btn',
+  inactiveButtonClass: 'form__safe-btn_unactive',
+  inputErrorClass: `#${element.id}-error`,
+  errorClass: 'form__field_invalid'
+});
+
 function init() {
-  const forms = [...document.querySelectorAll('.form__fields')];
+  const forms = [...document.querySelectorAll(formSelector)];
   forms.forEach(addListenersToForm);
 }
 
 function addListenersToForm(form) {
-  const inputs = [...form.querySelectorAll('.form__field')];
+  const inputs = [...form.querySelectorAll(inputSelector)];
   inputs.forEach(addListenersToInput);
   form.addEventListener('submit', handleSubmit);
   form.addEventListener('input', handleFormInput);
@@ -18,10 +27,9 @@ function handleFormInput(event) {
 }
 
 function setSubmitButtonState(form) {
-  const button = form.querySelector('.form__safe-btn');
+  const button = form.querySelector(submitButtonSelector);
   button.disabled = !form.checkValidity();
-  button.classList.toggle('form__safe-btn_unactive', !form.checkValidity());
-  console.log('button');
+  button.classList.toggle(inactiveButtonClass, !form.checkValidity());
 }
 
 function handleSubmit(event) {
@@ -41,11 +49,11 @@ function addListenersToInput(input) {
 function handleFieldValidation(event) {
   const {target: element} = event;
   element.setCustomValidity('');
-  const errorContainer = document.querySelector(`#${element.id}-error`);
+  const errorContainer = document.querySelector(inputErrorClass);
   validateLength(element);
   validateValueMissing(element);
   errorContainer.textContent = element.validationMessage;
-  element.classList.toggle('form__field_invalid', !element.validity.valid);
+  element.classList.toggle(errorClass, !element.validity.valid);
 }
 
 function validateLength(element) {
@@ -59,4 +67,5 @@ function validateValueMissing(element) {
     element.setCustomValidity('Заполните поле');
   }
 }
-init();
+
+
