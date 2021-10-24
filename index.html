@@ -8,35 +8,49 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-
     <div class="popup popup-image">
       <div class="popup__container popup-image__container">
-        <button class="popup__close-icon popup-image__close-icon" type="button"></button>
-        <img class="popup-image__block" src="./images/11111.png">
+        <button
+          class="popup__close-icon popup-image__close-icon"
+          type="button"
+        ></button>
+        <img class="popup-image__block" src="./images/11111.png" />
         <p class="popup-image__text">Карачаево-Черкессия</p>
       </div>
     </div>
-
     <div class="popup popup-edit-profile">
       <div class="popup__container">
-        <button class="popup__close-icon popup-edit-close-icon" type="button"></button>
+        <button
+          class="popup__close-icon popup-edit-close-icon"
+          type="button"
+        ></button>
         <div class="form">
           <h2 class="form__title">Редактировать профиль</h2>
-          <form class="form__fields form-edit-profile" name="form">
+          <form class="form__fields form-edit-profile" name="add" novalidate>
             <input
               class="form__field"
               type="text"
               placeholder=""
               value="Жак-Ив Кусто"
               name="name"
+              id="name"
+              minlength="2"
+              maxlength="40"
+              required
             />
+            <span id="name-error" class="error"></span>
             <input
               class="form__field"
               type="text"
               placeholder=""
               value="Исследователь океана"
               name="profession"
+              id="profession"
+              minlength="2"
+              maxlength="200"
+              required
             />
+            <span id="profession-error" class="error"></span>
             <button class="form__safe-btn" type="submit">Сохранить</button>
           </form>
         </div>
@@ -50,21 +64,29 @@
         ></button>
         <div class="form form-new-card">
           <h2 class="form__title">Новое место</h2>
-          <form class="form__fields form-add-card" name="form">
+          <form class="form__fields form-add-card" name="place-add" novalidate>
             <input
               class="form__field"
               type="text"
               placeholder="Название"
               value=""
-              name="name"
+              name="place"
+              id="place"
+              minlength="2"
+              maxlength="30"
+              required
             />
+            <span id="place-error" class="error"></span>
             <input
-              class="form__field "
-              type="text"
+              class="form__field"
+              type="url"
               placeholder="Ссылка на картинку"
               value=""
-              name="profession"
+              name="link"
+              id="link"
+              required
             />
+            <span id="link-error" class="error"></span>
             <button
               class="form__safe-btn form-new-card__safe-btn"
               type="submit"
@@ -102,5 +124,6 @@
       </div>
     </template>
     <script src="./scripts/scripts.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>
