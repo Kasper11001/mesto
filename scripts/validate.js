@@ -40,11 +40,6 @@ function setSubmitButtonState(form , obj) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  const {target: form} = event;
-  const data = [...form.querySelectorAll('.form__field')].reduce((sum, input) => {
-    sum[input.name] = input.value;
-    return sum;
-  },{});
 }
 
 function addListenersToInput(input, obj) {
