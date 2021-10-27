@@ -9,7 +9,6 @@
  const profileAbout = document.querySelector('.profile__about');
  const cardsList = document.querySelector('.cards');
  const cardTemplate = document.querySelector('#card-item-template').content;
- const newCardSafeBtn = document.querySelector('.form-new-card__safe-btn');
  const fieldsNewCards = formFieldAddCard.querySelectorAll('.form__field');
  const popupImage = document.querySelector('.popup-image');
  const imgBlock = document.querySelector('.popup-image__block');
@@ -115,10 +114,10 @@ function closePopup(openedPopup) {
  }
 
  function safeInfo(evt) {
-   evt.preventDefault()
+   evt.preventDefault();
    profileName.textContent = editProfileFormFields[0].value;
    profileAbout.textContent = editProfileFormFields[1].value;
-   openPopupEditProfile();
+   closePopup(popupEditProfile);
  }
 
  function safeNewCard(evt) {
@@ -126,7 +125,7 @@ function closePopup(openedPopup) {
    const placeName = fieldsNewCards[0].value;
    const imageLink = fieldsNewCards[1].value;
    renderCard(placeName, imageLink);
-   openPopup(popupNewCard);
+   closePopup(popupNewCard);
    fieldsNewCards[0].value = "";
    fieldsNewCards[1].value = "";
    const button = document.querySelector('.form-new-card__safe-btn');
