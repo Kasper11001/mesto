@@ -1,5 +1,7 @@
   import { Card } from "./Card.js";
   import { FormValidator } from "./FormValidator.js";
+  const addProfileForm = document.forms.add;
+  const addNewCardForm = document.forms.place;
   const profileAddBtn = document.querySelector('.profile__add-button');
   const popupNewCard = document.querySelector('.popup-new-card');
   const popupEditProfile = document.querySelector('.popup-edit-profile');
@@ -51,22 +53,24 @@ const validationConfig = {
   errorClass: 'form__field_invalid'
 }
 
-const formValidator = new FormValidator(validationConfig);
+const formValidatorAdd = new FormValidator(validationConfig, addProfileForm);
+const formValidatorPlaceAdd = new FormValidator(validationConfig, addNewCardForm);
 
+function createCard(item) {
+  const card = new Card(item,'#card-item-template', openPopupImage);
+  const cardElement = card.generateCard();
+  return cardElement;
+
+}
 
 initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  const card = new Card(item,'#card-item-template', openPopupImage);
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-
-  // Добавляем в DOM
-  document.querySelector('.cards').append(cardElement);
+  const card = createCard(item);// Создадим экземпляр карточки
+  document.querySelector('.cards').append(card);
 });
 
 function closeByEscape(event) {
-  const openedPopup = document.querySelector('.popup_opened');
     if (event.key === "Escape") {
+      const openedPopup = document.querySelector('.popup_opened');
       closePopup(openedPopup);
     }
 }
@@ -113,19 +117,9 @@ function safeNewCard(evt) {
   name:placeName,
   link:imageLink,
   }
-
-  const card = new Card(data,'#card-item-template', openPopupImage);
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-
-  // Добавляем в DOM
-  document.querySelector('.cards').prepend(cardElement);
+  const card = createCard(data);
+  document.querySelector('.cards').prepend(card);
   closePopup(popupNewCard);
-  fieldsNewCards[0].value = "";
-  fieldsNewCards[1].value = "";
-  const button = document.querySelector('.form-new-card__safe-btn');
-  button.disabled = true;
-  button.classList.add('form__safe-btn_unactive');
 }
 profileAddBtn.addEventListener('click', openPopupNewCard);
 formEditProfile.addEventListener('submit', safeInfo);
@@ -140,4 +134,5 @@ const popups = document.querySelectorAll('.popup');
     });
   });
 
-formValidator.enableValidation();
+formValidatorAdd.enableValidation();
+formValidatorPlaceAdd.enableValidation();

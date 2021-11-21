@@ -1,20 +1,20 @@
 export class FormValidator {
-  constructor(obj) {
+  constructor(obj, formElement) {
+    this._formElement = formElement;
     this._obj = obj;
   }
 
   enableValidation() {
-    const forms = [...document.querySelectorAll(this._obj.formSelector)];
-    forms.forEach(form => {
-      this._addListenersToForm(form, this._obj);
-    });
+      this._addListenersToForm(this._formElement, this._obj);
   }
   _addListenersToForm(form, obj) {
     const inputs = [...form.querySelectorAll(obj.inputSelector)];
     inputs.forEach(input => {
       this._addListenersToInput(input, obj);
     });
-    form.addEventListener('submit', this._handleSubmit);
+    form.addEventListener('submit', (event) => {
+      this._handleSubmit(event, inputs);
+    });
     form.addEventListener('input', (event) => {
       this._handleFormInput(event, obj);
     });
@@ -27,8 +27,13 @@ export class FormValidator {
     });
   }
 
-  _handleSubmit(event) {
+  _handleSubmit(event, input) {
     event.preventDefault();
+    input[0].value = "";
+    input[1].value = "";
+    const button = document.querySelector('.form-new-card__safe-btn');
+    button.disabled = true;
+   button.classList.add('form__safe-btn_unactive');
   }
 
   _handleFormInput(event, obj) {
@@ -40,6 +45,7 @@ export class FormValidator {
     const button = form.querySelector(obj.submitButtonSelector);
     button.disabled = !form.checkValidity();
     button.classList.toggle(obj.inactiveButtonClass, !form.checkValidity());
+
   }
 
   _handleFieldValidation(event, obj) {
