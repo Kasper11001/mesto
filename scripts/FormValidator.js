@@ -5,25 +5,25 @@ export class FormValidator {
   }
 
   enableValidation() {
-      this._addListenersToForm(this._formElement, this._obj);
+      this._addListenersToForm();
   }
-  _addListenersToForm(form, obj) {
-    const inputs = [...form.querySelectorAll(obj.inputSelector)];
+  _addListenersToForm() {
+    const inputs = [...this._formElement.querySelectorAll(this._obj.inputSelector)];
     inputs.forEach(input => {
-      this._addListenersToInput(input, obj);
+      this._addListenersToInput(input, this._obj);
     });
-    form.addEventListener('submit', (event) => {
+    this._formElement.addEventListener('submit', (event) => {
       this._handleSubmit(event, inputs);
     });
-    form.addEventListener('input', (event) => {
-      this._handleFormInput(event, obj);
+    this._formElement.addEventListener('input', (event) => {
+      this._handleFormInput(event, this._obj);
     });
-    this._setSubmitButtonState(form, obj);
+    this._setSubmitButtonState(this._formElement, this._obj);
   }
 
-  _addListenersToInput(input, obj) {
+  _addListenersToInput(input) {
     input.addEventListener('input', (event) => {
-      this._handleFieldValidation(event, obj);
+      this._handleFieldValidation(event, this._obj);
     });
   }
 
@@ -33,29 +33,28 @@ export class FormValidator {
     input[1].value = "";
     const button = document.querySelector('.form-new-card__safe-btn');
     button.disabled = true;
-   button.classList.add('form__safe-btn_unactive');
+    button.classList.add('form__safe-btn_unactive');
   }
 
-  _handleFormInput(event, obj) {
-    const {currentTarget:form} = event;
-    this._setSubmitButtonState(form, obj);
+  _handleFormInput() {
+    this._setSubmitButtonState();
   }
 
-  _setSubmitButtonState(form , obj) {
-    const button = form.querySelector(obj.submitButtonSelector);
-    button.disabled = !form.checkValidity();
-    button.classList.toggle(obj.inactiveButtonClass, !form.checkValidity());
+  _setSubmitButtonState() {
+    const button = this._formElement.querySelector(this._obj.submitButtonSelector);
+    button.disabled = !this._formElement.checkValidity();
+    button.classList.toggle(this._obj.inactiveButtonClass, !this._formElement.checkValidity());
 
   }
 
-  _handleFieldValidation(event, obj) {
+  _handleFieldValidation(event) {
     const {target: element} = event;
     element.setCustomValidity('');
-    const errorContainer = document.querySelector(`#${element.id}-${obj.inputErrorClass}`);
+    const errorContainer = document.querySelector(`#${element.id}-${this._obj.inputErrorClass}`);
     this._validateLength(element);
     this._validateValueMissing(element);
     errorContainer.textContent = element.validationMessage;
-    element.classList.toggle(obj.errorClass, !element.validity.valid);
+    element.classList.toggle(this._obj.errorClass, !element.validity.valid);
   }
 
   _validateLength(element) {
