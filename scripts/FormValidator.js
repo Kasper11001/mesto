@@ -10,20 +10,20 @@ export class FormValidator {
   _addListenersToForm() {
     const inputs = [...this._formElement.querySelectorAll(this._obj.inputSelector)];
     inputs.forEach(input => {
-      this._addListenersToInput(input, this._obj);
+      this._addListenersToInput(input);
     });
     this._formElement.addEventListener('submit', (event) => {
       this._handleSubmit(event, inputs);
     });
     this._formElement.addEventListener('input', (event) => {
-      this._handleFormInput(event, this._obj);
+      this._handleFormInput(event);
     });
-    this._setSubmitButtonState(this._formElement, this._obj);
+    this._setSubmitButtonState();
   }
 
   _addListenersToInput(input) {
     input.addEventListener('input', (event) => {
-      this._handleFieldValidation(event, this._obj);
+      this._handleFieldValidation(event);
     });
   }
 
