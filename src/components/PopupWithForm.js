@@ -15,13 +15,16 @@ export class PopupWithForm extends Popup{
     });
     return this._formValues;
   }
+  close() {
+    super.close();
+    this._popupForm.reset();
+  }
   setEventListeners() {
     super.setEventListeners();
     this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submitForm(this._getInputValues());
       this.close();
-      this._popupForm.reset();
     });
   }
 }

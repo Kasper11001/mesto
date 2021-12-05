@@ -23,8 +23,9 @@ export class Card {
     this._setEventListeners(); // добавим обработчики
 
     // Добавим данные
-    this._element.querySelector('.card__image').src = this._link;
-    this._element.querySelector('.card__image').alt = this._name;
+    const cardData = this._element.querySelector('.card__image');
+    cardData.src = this._link;
+    cardData.alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
 
     // Вернём элемент наружу
@@ -37,7 +38,7 @@ export class Card {
   }
 
   _handleDeleteClick() {
-    this._element.querySelector('.card__delete-icon').closest('.card').remove();
+    this._element.remove();
   }
 
   _setEventListeners() {
