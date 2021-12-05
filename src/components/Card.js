@@ -1,13 +1,13 @@
 export class Card {
   // в конструкторе будут динамические данные,
   // для каждого экземпляра свои
-  constructor(data, cardSelector, openPopupImage) {
+  constructor(data, cardSelector, {handleCardClick}) {
       // text и image — приватные поля,
       // они нужны только внутри класса
       this._name = data.name;
       this._link = data.link;
       this._cardSelector = cardSelector;
-      this._openPopupImage = openPopupImage;
+      this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -47,7 +47,7 @@ export class Card {
     } else if (evt.target.classList.contains('card__like')) {
       this._handleLikeClick();
     } else {
-      this._openPopupImage(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     }
     });
   }

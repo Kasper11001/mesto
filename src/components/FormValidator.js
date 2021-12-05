@@ -29,8 +29,6 @@ export class FormValidator {
 
   _handleSubmit(event, input) {
     event.preventDefault();
-    input[0].value = "";
-    input[1].value = "";
     const button = document.querySelector('.form-new-card__safe-btn');
     button.disabled = true;
     button.classList.add('form__safe-btn_unactive');
