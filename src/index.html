@@ -19,10 +19,7 @@
     </div>
     <div class="popup popup-edit-profile">
       <div class="popup__container">
-        <button
-          class="popup__close-icon popup-edit-close-icon"
-          type="button"
-        ></button>
+        <button class="popup__close-icon" type="button"></button>
         <div class="form">
           <h2 class="form__title">Редактировать профиль</h2>
           <form class="form__fields form-edit-profile" name="add" novalidate>
@@ -55,12 +52,43 @@
         </div>
       </div>
     </div>
+    <div class="popup popup-confirmation">
+      <div class="popup__container">
+        <button class="popup__close-icon" type="button"></button>
+        <div class="form">
+          <h2 class="form__title">Вы уверены?</h2>
+          <form class="form__fields" name="confirmation" novalidate>
+            <button class="form__safe-btn" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-confirmation-edit-profile">
+      <div class="popup__container">
+        <button class="popup__close-icon" type="button"></button>
+        <div class="form">
+          <h2 class="form__title">Обновить аватар</h2>
+          <form class="form__fields" name="edit" novalidate>
+            <input
+              class="form__field"
+              type="url"
+              placeholder=""
+              value=""
+              name="link"
+              id="link"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span id="link-error" class="error"></span>
+            <button class="form__safe-btn" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <div class="popup popup-new-card">
       <div class="popup__container">
-        <button
-          class="popup__close-icon popup-new-card__close-icon"
-          type="button"
-        ></button>
+        <button class="popup__close-icon" type="button"></button>
         <div class="form form-new-card">
           <h2 class="form__title">Новое место</h2>
           <form class="form__fields form-add-card" name="place" novalidate>
@@ -82,10 +110,10 @@
               placeholder="Ссылка на картинку"
               value=""
               name="link"
-              id="link"
+              id="newCardLink"
               required
             />
-            <span id="link-error" class="error"></span>
+            <span id="newCardLink-error" class="error"></span>
             <button
               class="form__safe-btn form-new-card__safe-btn"
               type="submit"
@@ -101,11 +129,10 @@
     </header>
     <main class="main container">
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/image.png')%>"
-          alt="Аватар"
-        />
+        <div class="profile__edit-block">
+          <div class="profile__marker"></div>
+          <img class="profile__avatar" src="#" alt="Аватар" />
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -123,9 +150,11 @@
         <button class="card__delete-icon"></button>
         <img class="card__image" src="#" alt="#" />
         <h2 class="card__title"></h2>
-        <button class="card__like" type="button"></button>
+        <div class="card__like-container">
+          <button class="card__like" type="button"></button>
+          <p class="card__like-counter">1</p>
+        </div>
       </div>
     </template>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

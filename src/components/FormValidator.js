@@ -2,6 +2,8 @@ export class FormValidator {
   constructor(obj, formElement) {
     this._formElement = formElement;
     this._obj = obj;
+    this._button = this._formElement.querySelector(obj.submitButtonSelector);
+    this._button.disabled = true;
   }
 
   enableValidation() {
