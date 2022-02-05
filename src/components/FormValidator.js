@@ -31,9 +31,8 @@ export class FormValidator {
 
   _handleSubmit(event, input) {
     event.preventDefault();
-    const button = document.querySelector('.form-new-card__safe-btn');
-    button.disabled = true;
-    button.classList.add('form__safe-btn_unactive');
+    this._button.disabled = true;
+    this._button.classList.add('form__safe-btn_unactive');
   }
 
   _handleFormInput() {
@@ -41,10 +40,8 @@ export class FormValidator {
   }
 
   _setSubmitButtonState() {
-    const button = this._formElement.querySelector(this._obj.submitButtonSelector);
-    button.disabled = !this._formElement.checkValidity();
-    button.classList.toggle(this._obj.inactiveButtonClass, !this._formElement.checkValidity());
-
+    this._button.disabled = !this._formElement.checkValidity();
+    this._button.classList.toggle(this._obj.inactiveButtonClass, !this._formElement.checkValidity());
   }
 
   _handleFieldValidation(event) {

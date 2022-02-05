@@ -103,7 +103,6 @@ const popupEditProfile = new PopupWithForm('.popup-edit-profile',{
       renderSaving(false);
       console.log(err);
     })
-
   }
 });
 
@@ -176,6 +175,8 @@ formValidatorEditProfile.enableValidation();
 
 formValidatorPlaceAdd.enableValidation();
 
+formValidatorAdd.enableValidation();
+
 popupWithImage.setEventListeners();
 
 popupNewCard.setEventListeners();
@@ -185,10 +186,10 @@ profileAddBtn.addEventListener('click', () => {
 });
 
 popupEditProfile.setEventListeners();
+
 popupEditProfileImage.setEventListeners();
 
 profileEditBtn.addEventListener('click', () => {
-  formValidatorAdd.enableValidation();
   const userInfoData = userInfo.getUserInfo();
   inputName.value = userInfoData.name;
   inputProfession.value = userInfoData.profession;
