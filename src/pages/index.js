@@ -8,9 +8,6 @@
     inputProfession,
     containerSelector,
     validationConfig,
-    profileName,
-    profileAbout,
-    profileAvatar,
     editImage,
     addEditForm,
     } from "../utils/constants.js";
@@ -55,10 +52,13 @@ const popupNewCard = new PopupWithForm('.popup-new-card',{
       .then((data) => {
         const card = createCard(data);
         cardsList.addItem(card);
+        renderSaving(false)
         popupNewCard.close();
       })
-      .catch((err) => console.log(err))
-      .finally(() => renderSaving(false))
+      .catch((err) => {
+        renderSaving(false)
+        console.log(err)
+      })
   }
 });
 
@@ -96,10 +96,14 @@ const popupEditProfile = new PopupWithForm('.popup-edit-profile',{
     api.updateProfileData(formValues)
     .then((data) => {
       userInfo.setUserInfo({name: data.name, about: data.about, avatar: data.avatar})
+      renderSaving(false)
       popupEditProfile.close();
     })
-    .catch((err) => console.log(err))
-    .finally(() => renderSaving(false))
+    .catch((err) => {
+      renderSaving(false);
+      console.log(err);
+    })
+
   }
 });
 
@@ -108,11 +112,14 @@ const popupEditProfileImage = new PopupWithForm('.popup-confirmation-edit-profil
     renderSaving(true)
     api.updateProfileAvatar(formValues)
     .then((data) => {
-      userInfo.setUserInfo(data)
+      userInfo.setUserInfo(data);
+      renderSaving(false);
       popupEditProfileImage.close();
     })
-    .catch((err) => console.log(err))
-    .finally(() => renderSaving(false))
+    .catch((err) => {
+      renderSaving(false)
+      console.log(err)
+    })
   }
 });
 
@@ -146,7 +153,8 @@ function createCard(item) {
      like: (cardId) => {
       api.likeCard(cardId)
        .then((data) => {
-        card.likesCounter(data)
+        card.likesCounter(data);
+        card.addLike();
        })
        .catch((err) => console.log(err)
        );
@@ -154,7 +162,8 @@ function createCard(item) {
      removeLike: (cardId) => {
        api.deleteLike(cardId)
        .then((data) => {
-        card.likesCounter(data)
+        card.likesCounter(data);
+        card.deleteLike();
        })
        .catch((err) => console.log(err)
        );
@@ -163,13 +172,15 @@ function createCard(item) {
   const cardElement = card.generateCard();
   return cardElement;
 }
+formValidatorEditProfile.enableValidation();
+
+formValidatorPlaceAdd.enableValidation();
 
 popupWithImage.setEventListeners();
 
 popupNewCard.setEventListeners();
 
 profileAddBtn.addEventListener('click', () => {
-  formValidatorPlaceAdd.enableValidation();
   popupNewCard.open();
 });
 
@@ -186,7 +197,6 @@ profileEditBtn.addEventListener('click', () => {
 popupWithSubmit.setEventListeners();
 
 editImage.addEventListener('click', () => {
-  formValidatorEditProfile.enableValidation();
   popupEditProfileImage.open();
 });
 
